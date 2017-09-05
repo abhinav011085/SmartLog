@@ -9,13 +9,12 @@ import android.content.Intent;
 
 public class ImagePicker {
     Activity activity;
-    int image_pick_code = 101;
 
     public ImagePicker(Activity activity) {
         this.activity = activity;
     }
 
-    public void pickImage() {
+    public void pickImage(int image_pick_code) {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
