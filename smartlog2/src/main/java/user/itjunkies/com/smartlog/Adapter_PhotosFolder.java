@@ -1,6 +1,7 @@
 package user.itjunkies.com.smartlog;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Created by User on 06-Sep-17.
@@ -24,19 +26,14 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
     ViewHolder viewHolder;
     ArrayList<Model_images> al_menu = new ArrayList<>();
 
-
-    public Adapter_PhotosFolder(Context context, ArrayList<Model_images> al_menu) {
+    Adapter_PhotosFolder(Context context, ArrayList<Model_images> al_menu) {
         super(context, R.layout.adapter_photosfolder, al_menu);
         this.al_menu = al_menu;
         this.context = context;
-
-
     }
 
     @Override
     public int getCount() {
-
-        Log.e("ADAPTER LIST SIZE", al_menu.size() + "");
         return al_menu.size();
     }
 
@@ -59,9 +56,9 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
         return position;
     }
 
-
+    @NonNull
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
 
         if (convertView == null) {
 
@@ -71,23 +68,20 @@ public class Adapter_PhotosFolder extends ArrayAdapter<Model_images> {
             viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
 
-
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
         viewHolder.tv_foldern.setText(al_menu.get(position).getStr_folder());
-        viewHolder.tv_foldersize.setText(al_menu.get(position).getAl_imagepath().size() + "");
+        viewHolder.tv_foldersize.setText(String.format(Locale.US, "%d", al_menu.get(position).getAl_imagepath().size()));
 
         Glide.with(context).load(al_menu.get(position).getAl_imagepath().get(0))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
                 .into(viewHolder.iv_image);
 
-
         return convertView;
-
     }
 
     private static class ViewHolder {
