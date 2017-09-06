@@ -16,7 +16,7 @@
             android:scaleType="fitXY"
             android:layout_gravity="center" />
 
-        <FrameLayout
+        <!--<FrameLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true">
@@ -48,16 +48,16 @@
                     android:textColor="#dfdfdf"
                     android:textSize="14sp" />
             </LinearLayout>
-        </FrameLayout>
+        </FrameLayout>-->
 
     </RelativeLayout>
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:id="@+id/rl_select"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5">
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </RelativeLayout>

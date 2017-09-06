@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#CECECE"
+    android:padding="5dp"
     tools:context="user.itjunkies.com.smartlog.FolderActivity">
 
     <GridView
         android:id="@+id/gv_folder"
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:numColumns="2"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"/>
 </RelativeLayout>

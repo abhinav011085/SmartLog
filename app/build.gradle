@@ -27,5 +27,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.github.abhinav011085:SmartLog:afbf7ccb5e'
+    //compile 'com.github.abhinav011085:SmartLog:ce61fea40c'
+    compile project(':smartlog2')
 }

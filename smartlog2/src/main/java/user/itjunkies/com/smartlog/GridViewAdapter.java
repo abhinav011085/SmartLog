@@ -68,9 +68,9 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
         if (convertView == null) {
 
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photosfolder, parent, false);
-            viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
-            viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photos, parent, false);
+            //viewHolder.tv_foldern = (TextView) convertView.findViewById(R.id.tv_folder);
+            //viewHolder.tv_foldersize = (TextView) convertView.findViewById(R.id.tv_folder2);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
 
 
@@ -79,8 +79,8 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.tv_foldern.setVisibility(View.GONE);
-        viewHolder.tv_foldersize.setVisibility(View.GONE);
+        //viewHolder.tv_foldern.setVisibility(View.GONE);
+        //viewHolder.tv_foldersize.setVisibility(View.GONE);
 
         Glide.with(context).load(al_menu.get(int_position).getAl_imagepath().get(position))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
@@ -93,7 +93,7 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
     }
 
     private static class ViewHolder {
-        TextView tv_foldern, tv_foldersize;
+        //TextView tv_foldern, tv_foldersize;
         ImageView iv_image;
 
 
