@@ -82,8 +82,6 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
         viewHolder.tv_foldern.setVisibility(View.GONE);
         viewHolder.tv_foldersize.setVisibility(View.GONE);
 
-        Log.i("data", "getView: " + al_menu.get(position).getAl_imagepath().get(0));
-
         Glide.with(context).load(al_menu.get(int_position).getAl_imagepath().get(position))
                 .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .skipMemoryCache(true)
