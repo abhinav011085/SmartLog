@@ -61,7 +61,7 @@ public class FolderActivity extends AppCompatActivity {
     }
 
     public ArrayList<Model_images> fn_imagespath() {
-        al_images.clear();
+        //al_images.clear();
 
         int int_position = 0;
         Uri uri;
