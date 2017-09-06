@@ -24,6 +24,7 @@ public class FolderActivity extends AppCompatActivity {
     Adapter_PhotosFolder obj_adapter;
     GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
+    String TAG = "data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class FolderActivity extends AppCompatActivity {
             }
         });
 
+        Log.i(TAG, "onCreate: ");
 
         if ((ContextCompat.checkSelfPermission(getApplicationContext(),
                 Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(getApplicationContext(),
@@ -76,12 +78,13 @@ public class FolderActivity extends AppCompatActivity {
         final String orderBy = MediaStore.Images.Media.DATE_TAKEN;
         cursor = getApplicationContext().getContentResolver().query(uri, projection, null, null, orderBy + " DESC");
 
+        Log.i(TAG, "fn_imagespath: " + uri);
         column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
         column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME);
         while (cursor.moveToNext()) {
             absolutePathOfImage = cursor.getString(column_index_data);
-            Log.e("Column", absolutePathOfImage);
-            Log.e("Folder", cursor.getString(column_index_folder_name));
+            Log.i("data", "Column" + absolutePathOfImage);
+            Log.i("data", "Folder" + cursor.getString(column_index_folder_name));
 
             for (int i = 0; i < al_images.size(); i++) {
                 if (al_images.get(i).getStr_folder().equals(cursor.getString(column_index_folder_name))) {
@@ -123,7 +126,7 @@ public class FolderActivity extends AppCompatActivity {
                 Log.e("FILE", al_images.get(i).getAl_imagepath().get(j));
             }
         }
-        obj_adapter = new Adapter_PhotosFolder(getApplicationContext(),al_images);
+        obj_adapter = new Adapter_PhotosFolder(getApplicationContext(), al_images);
         gv_folder.setAdapter(obj_adapter);
         return al_images;
     }
