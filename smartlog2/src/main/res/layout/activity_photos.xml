@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#CECECE"
-    android:padding="5dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="user.itjunkies.com.smartlog.PhotosActivity">
 
@@ -19,6 +18,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recView"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>

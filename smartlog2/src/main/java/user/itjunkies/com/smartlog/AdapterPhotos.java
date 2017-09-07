@@ -70,10 +70,13 @@ public class AdapterPhotos extends RecyclerView.Adapter<AdapterPhotos.Holder> {
                         selected.setVisibility(View.VISIBLE);
                         PhotosActivity.selected_images.add(al_images.get(getAdapterPosition()));
                         Log.i(TAG, "onClick: size " + PhotosActivity.selected_images.size());
+                        PhotosActivity.done.setVisibility(View.VISIBLE);
                     } else {
                         selected.setVisibility(View.GONE);
                         PhotosActivity.selected_images.remove(al_images.get(getAdapterPosition()));
                         Log.i(TAG, "onClick: size " + PhotosActivity.selected_images.size());
+                        if (PhotosActivity.selected_images.size() == 0)
+                            PhotosActivity.done.setVisibility(View.GONE);
                     }
                 }
             });
