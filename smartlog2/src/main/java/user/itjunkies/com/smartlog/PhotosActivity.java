@@ -1,6 +1,7 @@
 package user.itjunkies.com.smartlog;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -38,7 +39,8 @@ public class PhotosActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Done", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ShowPhotosActivity.class);
+                startActivity(intent);
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recView);
