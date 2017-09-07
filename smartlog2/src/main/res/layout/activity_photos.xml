@@ -6,13 +6,19 @@
     android:layout_height="match_parent"
     android:background="#CECECE"
     android:padding="5dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="user.itjunkies.com.smartlog.PhotosActivity">
 
-    <GridView
+    <!--<GridView
         android:id="@+id/gv_folder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="3"
         android:verticalSpacing="5dp"
-        android:horizontalSpacing="5dp"/>
+        android:horizontalSpacing="5dp"/>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>

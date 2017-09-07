@@ -29,7 +29,7 @@ public class FolderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_folder);
+        setContentView(R.layout.app_bar_folder);
 
         gv_folder = (GridView) findViewById(R.id.gv_folder);
 

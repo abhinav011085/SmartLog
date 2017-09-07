@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -24,9 +25,11 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
     ViewHolder viewHolder;
     ArrayList<Model_images> al_menu = new ArrayList<>();
     int int_position;
+    String TAG = "data";
+    static RelativeLayout selected;
 
     GridViewAdapter(Context context, ArrayList<Model_images> al_menu, int int_position) {
-        super(context, R.layout.adapter_photosfolder, al_menu);
+        super(context, R.layout.adapter_photos, al_menu);
         this.al_menu = al_menu;
         this.context = context;
         this.int_position = int_position;
@@ -64,6 +67,7 @@ public class GridViewAdapter extends ArrayAdapter<Model_images> {
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_photos, parent, false);
             viewHolder.iv_image = (ImageView) convertView.findViewById(R.id.iv_image);
+            selected = (RelativeLayout) convertView.findViewById(R.id.selected);
 
             convertView.setTag(viewHolder);
         } else {
