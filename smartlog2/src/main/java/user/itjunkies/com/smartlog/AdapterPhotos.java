@@ -68,13 +68,11 @@ public class AdapterPhotos extends RecyclerView.Adapter<AdapterPhotos.Holder> {
                 public void onClick(View view) {
                     if (selected.getVisibility() == View.GONE) {
                         selected.setVisibility(View.VISIBLE);
-                        PhotosActivity.selected_images.add(al_images.get(getAdapterPosition()));
-                        Log.i(TAG, "onClick: size " + PhotosActivity.selected_images.size());
+                        PhotosActivity.selected_images.add(al_images.get(int_position).getAl_imagepath().get(getAdapterPosition()));
                         PhotosActivity.done.setVisibility(View.VISIBLE);
                     } else {
                         selected.setVisibility(View.GONE);
-                        PhotosActivity.selected_images.remove(al_images.get(getAdapterPosition()));
-                        Log.i(TAG, "onClick: size " + PhotosActivity.selected_images.size());
+                        PhotosActivity.selected_images.remove(al_images.get(int_position).getAl_imagepath().get(getAdapterPosition()));
                         if (PhotosActivity.selected_images.size() == 0)
                             PhotosActivity.done.setVisibility(View.GONE);
                     }

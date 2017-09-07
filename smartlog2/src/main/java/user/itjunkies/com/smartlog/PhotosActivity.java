@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
@@ -19,8 +20,9 @@ public class PhotosActivity extends AppCompatActivity {
     GridViewAdapter adapter;
     RecyclerView recyclerView;
 
-    public static ArrayList<Model_images> selected_images = new ArrayList<>();
+    public static ArrayList<String> selected_images = new ArrayList<>();
     static TextView done;
+    String TAG = "data";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class PhotosActivity extends AppCompatActivity {
         });
         recyclerView = (RecyclerView) findViewById(R.id.recView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+        recyclerView.addItemDecoration(new ItemDecorationAlbumColumns(10, 3));
         recyclerView.setAdapter(new AdapterPhotos(context, FolderActivity.al_images, int_position));
     }
 
