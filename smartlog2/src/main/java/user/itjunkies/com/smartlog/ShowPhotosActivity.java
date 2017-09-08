@@ -3,6 +3,7 @@ package user.itjunkies.com.smartlog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +45,12 @@ public class ShowPhotosActivity extends AppCompatActivity {
                 intent.putStringArrayListExtra(new ImagePicker().DATA, PhotosActivity.selected_images);
                 setResult(RESULT_OK,intent);
                 finish();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        PhotosActivity.selected_images.clear();
+                    }
+                }, 1000);
             }
         });
 
