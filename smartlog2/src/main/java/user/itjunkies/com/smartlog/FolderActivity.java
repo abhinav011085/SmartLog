@@ -38,7 +38,7 @@ public class FolderActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), PhotosActivity.class);
                 intent.putExtra("value", i);
-                startActivity(intent);
+                startActivityForResult(intent, new ImagePicker().IMAGEPICHER_REQ);
             }
         });
 
@@ -56,6 +56,18 @@ public class FolderActivity extends AppCompatActivity {
             }
         } else {
             fn_imagespath();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == new ImagePicker().IMAGEPICHER_REQ && resultCode == RESULT_OK
+                && null != data) {
+            Intent intent = new Intent();
+            intent.putStringArrayListExtra(new ImagePicker().DATA, PhotosActivity.selected_images);
+            setResult(RESULT_OK, intent);
+            finish();
         }
     }
 

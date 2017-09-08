@@ -40,13 +40,25 @@ public class PhotosActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ShowPhotosActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, new ImagePicker().IMAGEPICHER_REQ);
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recView);
         recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
         recyclerView.addItemDecoration(new ItemDecorationAlbumColumns(10, 3));
         recyclerView.setAdapter(new AdapterPhotos(context, FolderActivity.al_images, int_position));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == new ImagePicker().IMAGEPICHER_REQ && resultCode == RESULT_OK
+                && null != data) {
+            Intent intent = new Intent();
+            intent.putStringArrayListExtra(new ImagePicker().DATA, PhotosActivity.selected_images);
+            setResult(RESULT_OK, intent);
+            finish();
+        }
     }
 
     @Override

@@ -8,10 +8,15 @@ import android.content.Intent;
  */
 
 public class ImagePicker {
-    Activity activity;
+    static Activity activity;
+    public int IMAGEPICHER_REQ=101;
+    public String DATA="data";
 
     public ImagePicker(Activity activity) {
         this.activity = activity;
+    }
+
+    public ImagePicker() {
     }
 
     public void pickImage(int image_pick_code) {
