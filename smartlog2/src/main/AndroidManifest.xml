@@ -21,6 +21,8 @@
             android:name=".ShowPhotosActivity"
             android:label="@string/title_activity_show_photos"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
     </application>
 
 </manifest>

@@ -59,6 +59,7 @@ class AdapterPhotosRecView extends RecyclerView.Adapter<AdapterPhotosRecView.Hol
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    ShowPhotosActivity.selPos=getAdapterPosition();
                     Glide.with(context).load(imageList.get(getAdapterPosition()))
                             .diskCacheStrategy(DiskCacheStrategy.NONE)
                             .skipMemoryCache(true)
