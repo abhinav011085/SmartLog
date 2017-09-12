@@ -34,6 +34,8 @@ public class ShowPhotosActivity extends AppCompatActivity {
 
     static int selPos = 0;
 
+    AdapterPhotosRecView adapterPhotosRecView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,17 +73,17 @@ public class ShowPhotosActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recView);
         recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.setAdapter(new AdapterPhotosRecView(context, PhotosActivity.selected_images));
+        adapterPhotosRecView = new AdapterPhotosRecView(context, PhotosActivity.selected_images);
+        recyclerView.setAdapter(adapterPhotosRecView);
 
         ImageView crop = (ImageView) findViewById(R.id.crop);
         crop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Crop" + Uri.fromFile(new File(PhotosActivity.selected_images.get(selPos))), Toast.LENGTH_SHORT).show();
                 CropImage.activity(Uri.fromFile(new File(PhotosActivity.selected_images.get(selPos))))
                         .setGuidelines(CropImageView.Guidelines.ON)
                         .setActivityTitle("Crop")
-                        .setCropShape(CropImageView.CropShape.OVAL)
+                        .setCropShape(CropImageView.CropShape.RECTANGLE)
                         .setCropMenuCropButtonTitle("Done")
                         .setRequestedSize(400, 400)
                         .setCropMenuCropButtonIcon(R.drawable.ic_tick)
@@ -99,7 +101,13 @@ public class ShowPhotosActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 //((ImageView) findViewById(R.id.quick_start_cropped_image)).setImageURI(result.getUri());
-                Toast.makeText(this, "Cropping successful, Sample: " + result.getSampleSize(), Toast.LENGTH_LONG).show();
+                PhotosActivity.selected_images.set(selPos, result.getUri().getPath());
+                adapterPhotosRecView.notifyItemChanged(selPos);
+                Glide.with(context).load(result.getUri().getPath())
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
+                        .into(ShowPhotosActivity.imageView);
+                Toast.makeText(this, "Cropping successful, Sample: " + result.getUri().getPath(), Toast.LENGTH_LONG).show();
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Toast.makeText(this, "Cropping failed: " + result.getError(), Toast.LENGTH_LONG).show();
                 Log.i(TAG, "onActivityResult: " + result.getError());

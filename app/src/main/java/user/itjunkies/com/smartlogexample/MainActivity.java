@@ -48,9 +48,11 @@ public class MainActivity extends AppCompatActivity {
                 && null != data) {
             imagesEncodedList = data.getStringArrayListExtra(new ImagePicker().DATA);
 
+            String path = "";
             for (int i = 0; i < imagesEncodedList.size(); i++) {
-                textView.setText(imagesEncodedList.get(i) + "\n");
+                path += "\n" + imagesEncodedList.get(i);
             }
+            textView.setText(path);
         }
     }
 }
