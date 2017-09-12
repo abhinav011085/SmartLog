@@ -9,8 +9,11 @@ import android.content.Intent;
 
 public class ImagePicker {
     static Activity activity;
-    public int IMAGEPICHER_REQ=101;
-    public String DATA="data";
+    public int IMAGEPICHER_REQ = 101;
+    public String DATA = "data";
+    public static String ACTION="action";
+    public static String IMAGES="images";
+    public static String VIDEOS="videos";
 
     public ImagePicker(Activity activity) {
         this.activity = activity;

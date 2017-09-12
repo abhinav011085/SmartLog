@@ -50,8 +50,13 @@ public class PhotosActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ShowPhotosActivity.class);
-                startActivityForResult(intent, new ImagePicker().IMAGEPICHER_REQ);
+                if (FolderActivity.type.equalsIgnoreCase(ImagePicker.IMAGES)) {
+                    Intent intent = new Intent(context, ShowPhotosActivity.class);
+                    startActivityForResult(intent, new ImagePicker().IMAGEPICHER_REQ);
+                } else {
+                    Intent intent = new Intent(context, ShowVideosActivity.class);
+                    startActivityForResult(intent, new ImagePicker().IMAGEPICHER_REQ);
+                }
             }
         });
         recyclerView = (RecyclerView) findViewById(R.id.recView);
@@ -59,7 +64,7 @@ public class PhotosActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new ItemDecorationAlbumColumns(10, 3));
         recyclerView.setAdapter(new AdapterPhotos(context, FolderActivity.al_images, int_position));
 
-        ImageView take_pic= (ImageView) findViewById(R.id.take_pic);
+        ImageView take_pic = (ImageView) findViewById(R.id.take_pic);
         take_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,20 +116,21 @@ public class PhotosActivity extends AppCompatActivity {
         startActivityForResult(intent, 100);
     }
 
-    private static File getOutputMediaFile(){
+    private static File getOutputMediaFile() {
         File mediaStorageDir = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), "CameraDemo");
 
-        if (!mediaStorageDir.exists()){
-            if (!mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
                 return null;
             }
         }
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         return new File(mediaStorageDir.getPath() + File.separator +
-                "IMG_"+ timeStamp + ".jpg");
+                "IMG_" + timeStamp + ".jpg");
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();

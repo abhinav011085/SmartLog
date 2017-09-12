@@ -3,6 +3,7 @@
     package="user.itjunkies.com.smartlog">
 
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
@@ -20,9 +21,14 @@
         <activity
             android:name=".ShowPhotosActivity"
             android:label="@string/title_activity_show_photos"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity
+            android:name=".ShowVideosActivity"
+            android:label="@string/title_activity_show_videos"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

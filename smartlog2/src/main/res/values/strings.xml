@@ -14,4 +14,5 @@
     <string name="pick_image_intent_chooser_title">Select source</string>
 
     <string name="crop_image_activity_no_permissions">Cancelling, required permissions are not granted</string>
+    <string name="title_activity_show_videos">ShowVideosActivity</string>
 </resources>

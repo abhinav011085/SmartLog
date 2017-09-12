@@ -26,10 +26,14 @@ public class FolderActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS = 100;
     String TAG = "data";
 
+    static String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_folder);
+
+        type = getIntent().getStringExtra(ImagePicker.ACTION);
 
         gv_folder = (GridView) findViewById(R.id.gv_folder);
 
@@ -80,15 +84,27 @@ public class FolderActivity extends AppCompatActivity {
         int column_index_data, column_index_folder_name;
 
         String absolutePathOfImage = null;
-        uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+        if (type.equalsIgnoreCase(ImagePicker.IMAGES)) {
+            uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
 
-        String[] projection = {MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME};
+            String[] projection = {MediaStore.MediaColumns.DATA, MediaStore.Images.Media.BUCKET_DISPLAY_NAME};
 
-        final String orderBy = MediaStore.Images.Media.DATE_TAKEN;
-        cursor = getApplicationContext().getContentResolver().query(uri, projection, null, null, orderBy + " DESC");
+            final String orderBy = MediaStore.Images.Media.DATE_TAKEN;
+            cursor = getApplicationContext().getContentResolver().query(uri, projection, null, null, orderBy + " DESC");
 
-        column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
-        column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME);
+            column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+            column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.BUCKET_DISPLAY_NAME);
+        } else {
+            uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+
+            String[] projection = {MediaStore.MediaColumns.DATA, MediaStore.Video.Media.BUCKET_DISPLAY_NAME};
+
+            final String orderBy = MediaStore.Video.Media.DATE_TAKEN;
+            cursor = getApplicationContext().getContentResolver().query(uri, projection, null, null, orderBy + " DESC");
+
+            column_index_data = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
+            column_index_folder_name = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.BUCKET_DISPLAY_NAME);
+        }
         while (cursor.moveToNext()) {
             absolutePathOfImage = cursor.getString(column_index_data);
             //Log.e("data", "Column" + absolutePathOfImage);
