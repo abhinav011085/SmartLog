@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/SmartLog.iml" filepath="$PROJECT_DIR$/.idea/SmartLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/SmartLog.iml" filepath="$PROJECT_DIR$/SmartLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smartlog2/smartlog2.iml" filepath="$PROJECT_DIR$/smartlog2/smartlog2.iml" />
       <module fileurl="file://$PROJECT_DIR$/smartlog2/smartlog2.iml" filepath="$PROJECT_DIR$/smartlog2/smartlog2.iml" />
     </modules>
   </component>
