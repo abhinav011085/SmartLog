@@ -34,6 +34,7 @@ public class PhotosActivity extends AppCompatActivity {
     private GridView gridView;
     GridViewAdapter adapter;
     RecyclerView recyclerView;
+    TextView title;
 
     public static ArrayList<String> selected_images = new ArrayList<>();
     static TextView done;
@@ -45,13 +46,15 @@ public class PhotosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_photos);
 
-
         Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        title= (TextView) findViewById(R.id.title);
+
         toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
         getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
         //gridView = (GridView) findViewById(R.id.gv_folder);
         int_position = getIntent().getIntExtra("value", 0);
+        title.setText(FolderActivity.al_images.get(int_position).getStr_folder());
         //adapter = new GridViewAdapter(this, FolderActivity.al_images, int_position);
         //gridView.setAdapter(adapter);
 
