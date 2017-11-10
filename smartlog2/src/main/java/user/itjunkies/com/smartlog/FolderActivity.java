@@ -5,13 +5,18 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
@@ -27,13 +32,25 @@ public class FolderActivity extends AppCompatActivity {
     String TAG = "data";
 
     static String type;
+    static int colorPrimary, colorPrimaryDark;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_folder);
 
         type = getIntent().getStringExtra(ImagePicker.ACTION);
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
+        getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
+
+        //Window.setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
+        /*Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);*/
+        getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
         gv_folder = (GridView) findViewById(R.id.gv_folder);
 

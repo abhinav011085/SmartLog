@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
@@ -40,6 +41,11 @@ public class PhotosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_photos);
+
+
+        Toolbar toolbar= (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
+        getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
         //gridView = (GridView) findViewById(R.id.gv_folder);
         int_position = getIntent().getIntExtra("value", 0);

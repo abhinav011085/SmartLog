@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -37,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textView = (TextView) findViewById(R.id.text);
+
+        ImagePicker.COLOR_PRIMARY = Color.parseColor("#FF8FE14B");
+        ImagePicker.COLOR_PRIMARY_DARK = Color.parseColor("#FF038B09");
     }
 
     public void onClick(View v) {
