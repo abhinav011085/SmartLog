@@ -29,6 +29,8 @@ public class FolderActivity extends AppCompatActivity {
     Adapter_PhotosFolder obj_adapter;
     GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
+    String[] permissionsRequired = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
     String TAG = "data";
 
     static String type;
@@ -63,19 +65,10 @@ public class FolderActivity extends AppCompatActivity {
             }
         });
 
-        if ((ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(getApplicationContext(),
-                Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-            if ((ActivityCompat.shouldShowRequestPermissionRationale(FolderActivity.this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) && (ActivityCompat.shouldShowRequestPermissionRationale(FolderActivity.this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE))) {
+        if (ActivityCompat.checkSelfPermission(FolderActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
-            } else {
-                ActivityCompat.requestPermissions(FolderActivity.this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
-                        REQUEST_PERMISSIONS);
-            }
-        } else {
+            ActivityCompat.requestPermissions(FolderActivity.this, permissionsRequired, REQUEST_PERMISSIONS);
+        }  else {
             fn_imagespath();
         }
     }
@@ -167,17 +160,19 @@ public class FolderActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
+        boolean allGrantred = false;
         switch (requestCode) {
             case REQUEST_PERMISSIONS: {
                 for (int i = 0; i < grantResults.length; i++) {
                     if (grantResults.length > 0 && grantResults[i] == PackageManager.PERMISSION_GRANTED) {
-                        fn_imagespath();
+                        allGrantred = true;
                     } else {
-                        Toast.makeText(FolderActivity.this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
+                        allGrantred = false;
                     }
                 }
             }
+            if (allGrantred)
+                fn_imagespath();
         }
     }
 }
