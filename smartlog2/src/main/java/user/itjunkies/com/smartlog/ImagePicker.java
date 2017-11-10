@@ -14,7 +14,7 @@ public class ImagePicker {
     public static String ACTION="action";
     public static String IMAGES="images";
     public static String VIDEOS="videos";
-    public static int COLOR_PRIMARY, COLOR_PRIMARY_DARK;
+    public static int COLOR_PRIMARY, COLOR_PRIMARY_DARK, COUNT;
 
     public ImagePicker(Activity activity) {
         this.activity = activity;

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImagePicker.COLOR_PRIMARY = Color.parseColor("#FF8FE14B");
         ImagePicker.COLOR_PRIMARY_DARK = Color.parseColor("#FF038B09");
+        ImagePicker.COUNT = 5;
     }
 
     public void onClick(View v) {

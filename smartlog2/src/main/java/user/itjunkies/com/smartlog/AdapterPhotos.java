@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -67,9 +68,11 @@ public class AdapterPhotos extends RecyclerView.Adapter<AdapterPhotos.Holder> {
                 @Override
                 public void onClick(View view) {
                     if (selected.getVisibility() == View.GONE) {
-                        selected.setVisibility(View.VISIBLE);
-                        PhotosActivity.selected_images.add(al_images.get(int_position).getAl_imagepath().get(getAdapterPosition()));
-                        PhotosActivity.done.setVisibility(View.VISIBLE);
+                        if (PhotosActivity.selected_images.size() < ImagePicker.COUNT) {
+                            selected.setVisibility(View.VISIBLE);
+                            PhotosActivity.selected_images.add(al_images.get(int_position).getAl_imagepath().get(getAdapterPosition()));
+                            PhotosActivity.done.setVisibility(View.VISIBLE);
+                        }else Toast.makeText(context, "You can only select "+ImagePicker.COUNT+" items", Toast.LENGTH_SHORT).show();
                     } else {
                         selected.setVisibility(View.GONE);
                         PhotosActivity.selected_images.remove(al_images.get(int_position).getAl_imagepath().get(getAdapterPosition()));
