@@ -52,6 +52,14 @@ public class PhotosActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
         getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
+        ImageView back= (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         //gridView = (GridView) findViewById(R.id.gv_folder);
         int_position = getIntent().getIntExtra("value", 0);
         title.setText(FolderActivity.al_images.get(int_position).getStr_folder());

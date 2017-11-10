@@ -20,15 +20,15 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ShowPhotosActivity"
-            android:label="@string/title_activity_show_photos"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".ShowVideosActivity"
-            android:label="@string/title_activity_show_videos"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -42,6 +42,14 @@ public class ShowVideosActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
         getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
+        ImageView back= (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

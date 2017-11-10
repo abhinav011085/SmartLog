@@ -19,6 +19,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -47,6 +48,13 @@ public class FolderActivity extends AppCompatActivity {
         toolbar.setBackgroundColor(ImagePicker.COLOR_PRIMARY);
         getWindow().setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
 
+        ImageView back= (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         //Window.setStatusBarColor(ImagePicker.COLOR_PRIMARY_DARK);
         /*Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
